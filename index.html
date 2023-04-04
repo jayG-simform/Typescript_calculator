@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Scientific - Calculatortsc TypeScript</title>
+
+        <!-- Bootstrap 5 cdn link -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <!-- font awesome cdn link  -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+            integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <link rel="stylesheet" href="css/style.css">
+
+    </head>
+    <body>
+        <div class="__main">
+            <div class="__calculator">
+                <div class="__display">
+                    <div class="__output">
+                        <input type="text" id="output_display" name="input">
+                    </div>
+                    <div class="__input"><input type="text" id="displayInput" name="input" placeholder="0"></div>
+                </div>
+                <div class="__degree">
+                    <h5 class="m-0"><button style="border: none; background-color: rgba(250, 250, 250, 0.808);" id="dag" class="dag" >DEG</button></h5>
+                    <h5 class="m-0"><button style="border: none; background-color: rgba(250, 250, 250, 0.808); display: none;" id="rad" class="rad" >RAD</button></h5>
+                    <h5 class="m-0"><button style="border: none; background-color: rgba(250, 250, 250, 0.808);" id="ftoE" class="ftoE" onclick="ftoE()">F-E</button></h5>
+                </div>
+                <div class="__setting">
+                    <h5 class="m-0"><button class="btnDark" id="mc" onclick="memoryClear()">MC</button></h5>
+                    <h5 class="m-0"><button class="btnDark" id="mr" onclick="memoryRead()">MR</button></h5>
+                    <h5 class="m-0"><button class="btnBlack" onclick="memoryAdd()">M+</button></h5>
+                    <h5 class="m-0"><button onclick="memorySub()">M-</button></h5>
+                    <h5 class="m-0"><button class="btnBlack" onclick="memoryStore()">MS</button></h5>
+                    <h5 class="m-0"><button class="btnDark" id="mshow" onclick="showMemory()">M <i class="fa fa-angle-down" aria-hidden="true"></i></button></h5>
+                </div>
+                
+                <div class="__function">
+                    <div class="_trigo">
+                        <div class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span style="font-size: 23px;">&#x22BE</span> Trigonometry
+                            </a>
+    
+                            <ul id="trigonometry" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li><button onclick="sin()" class="dropdown-item" href="#">sin()</button></li>
+                                <li><button onclick="cos()" class="dropdown-item" href="#">cos()</button></li>
+                                <li><button onclick="tan()" class="dropdown-item" href="#">tan()</button></li>
+                                <li><button onclick="csc()" class="dropdown-item" href="#">csc()</button></li>
+                                <li><button onclick="cot()" class="dropdown-item" href="#">cot()</button></li>
+                                <li><button onclick="sec()" class="dropdown-item" href="#">sec()</button></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="_func">
+                        <div class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span style="font-size: 19px;"><i>&#x0192;</i></span> <span class="mx-2">Function</span>
+                            </a>
+    
+                            <ul id="function" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <!-- <li><button value="degree(0)" class="dropdown-item" href="#">->deg</button></li>
+                                <li><button value="dms(0)" class="dropdown-item" href="#">->dms</button></li> -->
+                                <li><button onclick="ceil()" class="dropdown-item" href="#">⌈x⌉</button></li>
+                                <li><button onclick="floor()" class="dropdown-item" href="#">⌊x⌋</button></li>
+                                <li><button onclick="this.value=Math.random()" class="dropdown-item" href="#">rand</button></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                    <div class="__keys">
+
+                        <!-- other functions  -->
+                        <div id="extra_field" style="position: relative;z-index: 99;">
+                            <button onclick="change()" id="change">2<sup>nd</sup></button>
+                        </div>
+                        <div>
+                            <button onclick="pi()">&pi;</button>
+                        </div>
+                        <div>
+                            <button onclick="Eclick()">e</button>
+                        </div>
+                        <div>
+                            <button value="C">C</button>
+                        </div>
+                        <div>
+                            <button value="DE" style="transform: rotate(180deg);">&#8998;</button>
+                        </div>
+                        <div>
+                            <button class="operator" onclick="sqr()">x&sup2;</button><button class="operator1" onclick="cube()" style="display: none;">x&sup3;</button>
+                        </div>
+                        <div>
+                            <button onclick="oneDevid()"><sup>1</sup>/<sub>x</sub></button>
+                        </div>
+                        <div>
+                            <button onclick="abs()">|x|</button>
+                        </div>
+                        <div>
+                            <button onclick="exp()">exp</button>
+                        </div>
+                        <div>
+                            <button value="%">mod</button>
+                        </div>
+                        <div>
+                            <button class="operator" onclick="sqrt()"><sup>2</sup>√x</button><button class="operator1" onclick="cuberoot()" style="display: none;"><sup>3</sup>√x</button>
+                        </div>
+                        <div>
+                            <button value="(">(</button>
+                        </div>
+                        <div>
+                            <button value=")">)</button>
+                        </div>
+                        <div>
+                            <button value="" onclick="fact()">n!</button>
+                        </div>
+                        <div>
+                            <button value="/" style="font-size: 20px;">/</button>
+                        </div>
+                        <div>
+                            <button class="operator" value="**">x<sup>y</sup></button><button class="operator1" value=" yroot " style="display: none;"><sup>y</sup>√x</button>
+                        </div>
+                        <div>
+                            <button value="7" style="font-weight: bold;">7</button>
+                        </div>
+                        <div>
+                            <button value="8" style="font-weight: bold;">8</button>
+                        </div>
+                        <div>
+                            <button value="9" style="font-weight: bold;">9</button>
+                        </div>
+                        <div>
+                            <button value="*" style="font-size: 20px;">*</button>
+                        </div>
+                        <div>
+                            <button class="operator" onclick="tanRoot()">10<sup>x</sup></button><button class="operator1" onclick="secondRoot()" style="display: none;">2<sup>x</sup></button>
+                        </div>
+                        <div>
+                            <button value="4" style="font-weight: bold;">4</button>
+                        </div>
+                        <div>
+                            <button value="5" style="font-weight: bold;">5</button>
+                        </div>
+                        <div>
+                            <button value="6" style="font-weight: bold;">6</button>
+                        </div>
+                        <div>
+                            <button value="-" style="font-size: 30px;">-</button>
+                        </div>
+                        <div>
+                            <button class="operator" onclick="log()">log</button><button class="operator1" value=" log base " style="display: none;">log<sub>y</sub><sup>x</sup></button>
+                        </div>
+                        <div>
+                            <button value="1" style="font-weight: bold;">1</button>
+                        </div>
+                        <div>
+                            <button value="2" style="font-weight: bold;">2</button>
+                        </div>
+                        <div>
+                            <button value="3" style="font-weight: bold;">3</button>
+                        </div>
+                        <div>
+                            <button value="+" style="font-size: 20px;">+</button>
+                        </div>
+                        <div>
+                            <button class="operator" onclick="ln()">ln</button><button class="operator1" style="display: none;" onclick="epower()">e<sup>x</sup></button>
+                        </div>
+                        <div>
+                            <button onclick="inverse()"><sup>+</sup>/-</button>
+                        </div>
+                        <div>
+                            <button value="0" style="font-weight: bold;">0</button>
+                        </div>
+                        <div>
+                            <button value="." style="font-size: 20px;">.</button>
+                        </div>
+                        <div>
+                            <button style="font-size: 25px;" value="=">=</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div id="memory-show">
+            </div>
+        </div>
+        <!-- Bootstrap 5 JS script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+        <script src="Calc.js" defer></script>
+    </body>
+</html>
